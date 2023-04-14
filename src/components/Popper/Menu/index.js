@@ -38,6 +38,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
             // visible
             interactive // cho active vao
             delay={[0, 700]}
+            offset={[12, 10]}
             placement="bottom-end" // vi tri cua tippy
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
@@ -54,6 +55,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                     </PopperWrapper>
                 </div>
             )}
+            onHide={() => setHistory((prev) => prev.slice(0, 1))} // khi tippy Ẩn thì sẽ set history về phần tử mảng đầu tiên
         >
             {children}
         </Tippy>

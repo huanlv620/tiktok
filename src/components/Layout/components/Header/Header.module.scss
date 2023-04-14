@@ -41,7 +41,6 @@
         background: #f1f1f2;
         caret-color: var(--primary); // con trỏ chuột màu đỏ
     }
-
     // khoong co placeholder thi ap dung css
     input:not(:placeholder-shown) ~ .search-btn {
         color: rgba(22, 24, 35, 0.75);
@@ -97,7 +96,19 @@
         background-color: rgba(22, 24, 35, 0.06);
     }
 }
+// actions
+.actions {
+    display: flex;
+    align-items: center;
+}
 
+.action-btn {
+    color: rgb(22, 24, 35);
+    font-size: 2.2rem;
+    padding: 4px 12px;
+    background-color: transparent;
+    cursor: pointer;
+}
 .more-btn {
     cursor: pointer;
     font: 2rem;
@@ -107,4 +118,13 @@
 
     &:hover {
     }
+}
+
+//
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 12px;
 }
