@@ -37,20 +37,6 @@ function Search() {
             setLoading(false);
         };
         fetchApi();
-        // request
-        //     .get('users/search', {
-        //         params: {
-        //             q: debounced,
-        //             type: 'less',
-        //         },
-        //     })
-        //     .then((res) => {
-        //         setSearchResults(res.data);
-        //         setLoading(false);
-        //     })
-        //     .catch((err) => {
-        //         setLoading(false);
-        //     });
     }, [debounced]);
 
     const handleClear = () => {
@@ -63,6 +49,12 @@ function Search() {
         setShowResults(false);
     };
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue); // nếu giá trị input nhập vào đầu tiên là dấu cách thì sẽ không nhận
+        }
+    };
     return (
         <HeadlessTippy
             interactive // cho active vao
@@ -86,7 +78,7 @@ function Search() {
                     value={searchValue}
                     placeholder="Search accouts and videos"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResults(true)}
                 />
                 {/* khi co searchValue thi moi hien dau X */}
@@ -96,7 +88,7 @@ function Search() {
                     </button>
                 )}
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                     <SearchIcon />
                 </button>
             </div>

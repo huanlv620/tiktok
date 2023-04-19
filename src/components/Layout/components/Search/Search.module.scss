@@ -20,6 +20,7 @@
         // background-color: transparent;
         background: #f1f1f2;
         caret-color: var(--primary); // con trỏ chuột màu đỏ
+        font-family: var(--font-family);
     }
     // khoong co placeholder thi ap dung css
     input:not(:placeholder-shown) ~ .search-btn {
