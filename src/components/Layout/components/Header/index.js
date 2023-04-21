@@ -104,7 +104,7 @@ function Header() {
                 <Search />
                 {/* actions */}
                 <div className={cx('actions')}>
-                    {true ? (
+                    {currentUser ? (
                         <>
                             <Tippy delay={[0, 50]} interactive content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>

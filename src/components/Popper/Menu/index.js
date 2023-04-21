@@ -35,6 +35,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
 
     return (
         <Tippy
+            appendTo={() => document.body} // fix lỗi hiện thị warning tippy
             // visible
             hideOnClick={false} // on mouse down thì sẽ không bị ẩn
             interactive // cho active vao
@@ -52,7 +53,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                                 }}
                             />
                         )}
-                        {renderItems()}
+                        <div className={cx('menu-body')}> {renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}
