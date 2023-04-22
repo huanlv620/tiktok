@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 
@@ -9,7 +10,7 @@ import styles from './Menu.module.scss';
 
 const cx = classNames.bind(styles);
 const defaultFn = () => {};
-function Menu({ children, items = [], onChange = defaultFn }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }) {
     const [history, setHistory] = useState([{ data: items }]);
 
     const current = history[history.length - 1]; // lay phan tu cuoi mang
@@ -37,7 +38,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
         <Tippy
             appendTo={() => document.body} // fix lỗi hiện thị warning tippy
             // visible
-            hideOnClick={false} // on mouse down thì sẽ không bị ẩn
+            hideOnClick={hideOnClick} // on mouse down thì sẽ không bị ẩn
             interactive // cho active vao
             delay={[0, 700]}
             offset={[12, 10]}
@@ -47,7 +48,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                     <PopperWrapper className={cx('menu-popper')}>
                         {history.length > 1 && (
                             <Header
-                                title="languege"
+                                title={current.title}
                                 onBack={() => {
                                     setHistory((prev) => prev.slice(0, history.length - 1));
                                 }}
@@ -63,5 +64,12 @@ function Menu({ children, items = [], onChange = defaultFn }) {
         </Tippy>
     );
 }
+
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
+    items: PropTypes.array,
+    hideOnClick: PropTypes.bool,
+    onChange: PropTypes.func,
+};
 
 export default Menu;
