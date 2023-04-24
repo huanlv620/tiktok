@@ -15,10 +15,10 @@
     input {
         flex: 1;
         height: 100%;
-        font-size: 1.6rem;
+        padding-right: 40px;
         color: var(--black);
-        // background-color: transparent;
         background: #f1f1f2;
+        font-size: 1.6rem;
         caret-color: var(--primary); // con trỏ chuột màu đỏ
         font-family: var(--font-family);
     }
